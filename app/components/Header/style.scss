@@ -1,34 +1,21 @@
 .header {
-  img {
-    width: 100%;
-    margin: 0 auto;
-    display: block;
-  }
+  &_container {
+    padding: 1em;
+    border: 1px solid steelblue;
+    display: flex;
+    flex-direction: column;
 
-  .nav-bar {
-    text-align: center;
-  }
-
-  .router-link {
-    display: inline-flex;
-    padding: 0.25em 2em;
-    margin: 1em;
-    text-decoration: none;
-    border-radius: 4px;
-    -webkit-font-smoothing: antialiased;
-    -webkit-touch-callout: none;
-    user-select: none;
-    cursor: pointer;
-    outline: 0;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    font-size: 16px;
-    border: 2px solid #41ADDD;
-    color: #41ADDD;
-
-    &:active {
-      background: #41ADDD;
-      color: #FFF;
+    &_search-login {
+      display: flex;
+      justify-content: space-between;
+      
+      .search_box, .login_box, .locale_box {
+        display: flex;
+        justify-content: center;
+        width: 30%;
+        height: 30px;
+        border: 1px solid steelblue;
+      }
     }
   }
 }
