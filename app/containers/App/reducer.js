@@ -19,31 +19,37 @@ import {
 } from './constants';
 
 // The initial state of the App
-const initialState = fromJS({
+const initialState = {
   loading: false,
   error: false,
   currentUser: false,
   userData: {
-    repositories: false,
+    repositories: null,
   },
-});
+};
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_REPOS:
-      return state
-        .set('loading', true)
-        .set('error', false)
-        .setIn(['userData', 'repositories'], false);
+      return {
+        ...state,
+        loading: true
+      };
     case LOAD_REPOS_SUCCESS:
-      return state
-        .setIn(['userData', 'repositories'], action.repos)
-        .set('loading', false)
-        .set('currentUser', action.username);
+      return {
+        ...state,
+        loading: false,
+        username: action.username,
+        userData: {
+          repositories: action.repos
+        }
+      };
     case LOAD_REPOS_ERROR:
-      return state
-        .set('error', action.error)
-        .set('loading', false);
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
     default:
       return state;
   }
