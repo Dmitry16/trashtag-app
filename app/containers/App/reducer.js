@@ -9,7 +9,7 @@
  * case YOUR_ACTION_CONSTANT:
  *   return state.set('yourStateVariable', true);
  */
-
+// import { combineReducers } from 'redux-immutable';
 import { fromJS } from 'immutable';
 
 import {
@@ -17,6 +17,7 @@ import {
   LOAD_REPOS,
   LOAD_REPOS_ERROR,
 } from './constants';
+import { combineReducers } from 'redux';
 
 // The initial state of the App
 const initialState = {

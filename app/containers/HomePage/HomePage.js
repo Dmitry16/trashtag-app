@@ -44,7 +44,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
                 <input
                   id="username"
                   type="text"
-                  placeholder="flexdinesh"
+                  placeholder="dd77"
                   value={this.props.username}
                   onChange={this.props.onChangeUsername}
                 />
