@@ -7,7 +7,13 @@ import Locale from 'components/Locale';
 import './style.scss';
 
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
+  componentDidMount() {
+  }
+  
   render() {
+    if (this.props && this.props.locale) console.log('Header render::', this.props);
+
     return (
       <div className="header">
         <div className="header_container">

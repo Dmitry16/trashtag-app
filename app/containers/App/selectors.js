@@ -4,33 +4,33 @@
 
 import { createSelector } from 'reselect';
 
-const selectGlobal = (state) => state.global;
+const selectGlobal = (state) => state.get('global');
 
-const selectRoute = (state) => state.route;
+const selectRoute = (state) => state.get('route');
 
 const makeSelectCurrentUser = () => createSelector(
   selectGlobal,
-  (globalState) => globalState ? globalState.currentUser : null
+  (globalState) => globalState.get('currentUser')
 );
 
 const makeSelectLoading = () => createSelector(
   selectGlobal,
-  (globalState) => globalState ? globalState.loading : null
+  (globalState) => globalState.get('loading')
 );
 
 const makeSelectError = () => createSelector(
   selectGlobal,
-  (globalState) => globalState ? globalState.error : null
+  (globalState) => globalState.get('error')
 );
 
 const makeSelectRepos = () => createSelector(
   selectGlobal,
-  (globalState) => globalState ? globalState.userData.repositories : null
+  (globalState) => globalState.getIn(['userData', 'repositories'])
 );
 
 const makeSelectLocation = () => createSelector(
   selectRoute,
-  (routeState) => routeState.location
+  (routeState) => routeState.get('location').toJS()
 );
 
 export {

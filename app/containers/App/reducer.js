@@ -9,7 +9,7 @@
  * case YOUR_ACTION_CONSTANT:
  *   return state.set('yourStateVariable', true);
  */
-// import { combineReducers } from 'redux-immutable';
+
 import { fromJS } from 'immutable';
 
 import {
@@ -17,40 +17,33 @@ import {
   LOAD_REPOS,
   LOAD_REPOS_ERROR,
 } from './constants';
-import { combineReducers } from 'redux';
 
 // The initial state of the App
-const initialState = {
+const initialState = fromJS({
   loading: false,
   error: false,
   currentUser: false,
   userData: {
-    repositories: null,
+    repositories: false,
   },
-};
+});
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_REPOS:
-      return {
-        ...state,
-        loading: true
-      };
+      return state
+        .set('loading', true)
+        .set('error', false)
+        .setIn(['userData', 'repositories'], false);
     case LOAD_REPOS_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        username: action.username,
-        userData: {
-          repositories: action.repos
-        }
-      };
+      return state
+        .setIn(['userData', 'repositories'], action.repos)
+        .set('loading', false)
+        .set('currentUser', action.username);
     case LOAD_REPOS_ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: action.error,
-      };
+      return state
+        .set('error', action.error)
+        .set('loading', false);
     default:
       return state;
   }

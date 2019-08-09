@@ -1,7 +1,12 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-// import { createStructuredSelector } from 'reselect';
+import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
+import {
+  makeSelectLocale,
+  makeSelectSearch,
+  makeSelectMenu
+} from './selectors';
 // import injectSaga from 'utils/injectSaga';
 // import {
 //   makeSelectRepos,
@@ -20,9 +25,10 @@ const mapDispatchToProps = (dispatch) => ({
   // }
 });
 
-const mapStateToProps = (store) => ({
-  locale: store.locale,
-  menu: store.menu,
+const mapStateToProps = (store) => createStructuredSelector({
+  locale: makeSelectLocale(),
+  menu: makeSelectSearch(),
+  search: makeSelectMenu(),
 });
 
 const withConnect = connect(mapStateToProps);
